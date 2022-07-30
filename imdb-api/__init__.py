@@ -397,24 +397,38 @@ class IMDb:
             if source is None:
                 source = IMDb.getPage(IMDb.getURL(imdb_id))
             if source != "":
-                try:                
-                    details1 = source.find("script",type="application/ld+json")
-                    details1 = re.sub(r'<.*?{', '{',str(details1) )
-                    details1 = re.sub(r'</.*','',details1)
-                    details_json1 = json.loads(details1)
-                    details2 = source.find("script",type="application/json")
-                    details2 = re.sub(r'<.*?{', '{',str(details2) )
-                    details2 = re.sub(r'</.*','',details2)
-                    details_json2 = json.loads(details2)
-                    details_json = {}
-                    details_json.update(details_json1)
-                    details_json.update(details_json2)
-                    return details_json
-                except:
-                    print("An error occured. Please report this issue (error_code=2) or wait for the next update.")
-                    return ""
+                # try:                
+                details1 = source.find("script",type="application/ld+json")
+                details1 = re.sub(r'<.*?{', '{',str(details1) )
+                details1 = re.sub(r'</.*','',details1)
+                details1 = IMDb.delDoubleQuotes(details1)
+                details_json1 = json.loads(details1)
+                details2 = source.find("script",type="application/json")
+                details2 = re.sub(r'<.*?{', '{',str(details2) )
+                details2 = re.sub(r'</.*','',details2)
+                details_json2 = json.loads(details2)
+                details_json = {}
+                details_json.update(details_json1)
+                details_json.update(details_json2)
+                return details_json
+                # except:
+                #     print("An error occured. Please report this issue (error_code=2) or wait for the next update.")
+                #     return ""
             else:
                 return ""
+            
+            
+    def delDoubleQuotes(json):
+        double_quotes = []
+        for i in range(len(json)):
+            if json[i] == '"':
+                if json[i-1] not in ["{",":","["] and json[i-2:i] not in ["],",'",','},']+[str(i)+"," for i in range(10)] and json[i+1] not in [":","}","]"] and json[i+1:i+3] not in [",[",',"',',{']:
+                    double_quotes.append(i)
+        i = len(double_quotes) - 1
+        while i >= 0:
+            json = json[:double_quotes[i]] + "''" + json[double_quotes[i]+1:]
+            i -= 1
+        return json
 
     def ListToText(List):
         text = ""
@@ -441,5 +455,5 @@ class IMDb:
             print("A network error occured. Please, check your internet connection.")
             return ""
         
-        
-        
+
+
