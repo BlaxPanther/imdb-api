@@ -397,23 +397,23 @@ class IMDb:
             if source is None:
                 source = IMDb.getPage(IMDb.getURL(imdb_id))
             if source != "":
-                # try:                
-                details1 = source.find("script",type="application/ld+json")
-                details1 = re.sub(r'<.*?{', '{',str(details1) )
-                details1 = re.sub(r'</.*','',details1)
-                details1 = IMDb.delDoubleQuotes(details1)
-                details_json1 = json.loads(details1)
-                details2 = source.find("script",type="application/json")
-                details2 = re.sub(r'<.*?{', '{',str(details2) )
-                details2 = re.sub(r'</.*','',details2)
-                details_json2 = json.loads(details2)
-                details_json = {}
-                details_json.update(details_json1)
-                details_json.update(details_json2)
-                return details_json
-                # except:
-                #     print("An error occured. Please report this issue (error_code=2) or wait for the next update.")
-                #     return ""
+                try:                
+                    details1 = source.find("script",type="application/ld+json")
+                    details1 = re.sub(r'<.*?{', '{',str(details1) )
+                    details1 = re.sub(r'</.*','',details1)
+                    details1 = IMDb.delDoubleQuotes(details1)
+                    details_json1 = json.loads(details1)
+                    details2 = source.find("script",type="application/json")
+                    details2 = re.sub(r'<.*?{', '{',str(details2) )
+                    details2 = re.sub(r'</.*','',details2)
+                    details_json2 = json.loads(details2)
+                    details_json = {}
+                    details_json.update(details_json1)
+                    details_json.update(details_json2)
+                    return details_json
+                except:
+                    print("An error occured. Please report this issue (error_code=2) or wait for the next update.")
+                    return ""
             else:
                 return ""
             
@@ -454,6 +454,4 @@ class IMDb:
         except:
             print("A network error occured. Please, check your internet connection.")
             return ""
-        
-
 
