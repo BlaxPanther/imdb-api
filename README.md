@@ -5,9 +5,10 @@ Let's start by importing the library and instantiating the IMDb class :
 	
 	imdb = IMDb()
 
-When a function is loaded, both ***imdb id*** and ***title*** can be typed in the input. 
 
 An imdb id of a title is the id starting by *tt*... For example, Se7en (1995) is referenced to the IMDb page https://www.imdb.com/title/tt0114369/. The imdb id of Se7en (1995) is ***tt0114369***.
+
+When a function is loaded, both ***imdb id*** and ***title*** can be typed in the input. 
 
 For example, `getFeatures("Se7en")` and `getFeatures("tt0114369")` will give the same results. Note that `getFeatures("Se7en")` will take more time because the program need to load the search page.
 
