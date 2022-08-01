@@ -1,3 +1,9 @@
+# Installation
+## Windows
+	python -m pip install imdb-page-api
+## Linux
+	pip install imdb-page-api
+
 # How to use imdb-api ?
 Let's start by importing the library and instantiating the IMDb class :
 
