@@ -7,7 +7,7 @@ class IMDb:
     
     url="https://www.imdb.com"
     
-    def getIdFromSearch(self,search):
+    def getIdFromSearch(self, search):
         if search == "":
             return ""
         if re.match(r"^tt\d{7,}$", search):
@@ -270,7 +270,7 @@ class IMDb:
             features["rating"] = IMDb.getRating(self, imdb_id, details)
             features["rating_count"] = IMDb.getRatingCount(self, imdb_id, details)
             features["reviews_count"] = IMDb.getReviewsCount(self, imdb_id, source)
-            features["keywords"] = IMDb.getKeywords(self, imdb_id, details, InList)
+            features["keywords"] = IMDb.getKeywords(self, imdb_id, details, InList = True)
             features["filming_location"] = IMDb.getFilmingLocation(self, imdb_id, source, InList)
             features["aka"] = IMDb.getAka(self, imdb_id, source, InList)
             features["poster_url"] = IMDb.getPosterURL(self, imdb_id, details)
@@ -454,4 +454,3 @@ class IMDb:
         except:
             print("A network error occured. Please, check your internet connection.")
             return ""
-
