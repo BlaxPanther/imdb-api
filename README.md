@@ -1,4 +1,5 @@
-## EDIT : requests library does not work anymore, add of a selenium version
+## Update (07/04/2022)
+The requests library does not work anymore with imdb.com, a new selenium version has been added.
 
 # Installation
 ## Windows
