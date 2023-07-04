@@ -1,7 +1,7 @@
 ## Update (2022/07/04)
 The `requests` library does not work anymore with [https://imdb.com](https://www.imdb.com/), a new version using the `selenium` library has been added.
 
-You can install the API with pip and replace the content of `__init__.py` by the content of the file `imdb-api_selenium_version.py`. 
+You can install the API with pip and replace the content of `__init__.py` by the content of `imdb-api_selenium_version.py`. 
 
 # Installation
 ## Windows
