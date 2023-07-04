@@ -1,3 +1,5 @@
+## EDIT : requests library does not work anymore, add of a selenium version
+
 # Installation
 ## Windows
 	python -m pip install imdb-page-api
