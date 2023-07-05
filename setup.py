@@ -14,7 +14,7 @@ setup(
     packages=["imdb_api"],
     url='https://github.com/BlaxPanther/imdb-api.git',
     keywords='python, imdb, movie-api, imdb-webscrapping, imdb-api, imdb-python, imdb-scraper',
-    install_requires=["requests==2.26.0","beautifulsoup4==4.10.0","html5lib>=0.999999999"],
+    install_requires=["requests==2.26.0","beautifulsoup4==4.10.0","html5lib>=0.999999999", "selenium>0.9999999999"],
     zip_safe=False,
     classifiers=[
     'Programming Language :: Python :: 3.4',
